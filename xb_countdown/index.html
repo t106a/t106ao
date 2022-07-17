@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+<meta charset="utf-8">
+<style>
+		@font-face {
+			font-family: "DFPYaYiW6-GB";
+			src: url("./DFPYaYiW6-GB.woff") format("woff"),
+				url("./DFPYaYiW6-GB.woff2") format("woff2"),
+				url("./DFPYaYiW6-GB.ttf") format("ttf");
+		}
+      .body {
+          margin: 0px;
+          background-image: url(mv.jpg);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+      }
+
+      .span {
+          width: 100%;
+          font-family: 'DFPYaYiW6-GB';
+          text-align: center;
+          font-size: 4vw;
+          color: #FFF;
+          text-shadow: 0 0 19.6px #005e94, 0 0 19.6px #005e94;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+      }
+    </style>
+ <head>
+ <script>
+ 
+ var timerCount= window.setTimeout("timer()",1000);
+ 
+ function PrefixInteger(num, n) {
+    return (Array(n).join(0) + num).slice(-n);
+}
+
+ function timer(){
+ var date=new Date("2022-07-28 23:00:00");
+ var deadlineTime=date.getTime();
+ var nowDate=new Date();
+ var nowTime=nowDate.getTime();
+ var distTime=deadlineTime-nowTime;
+ if(distTime>0){
+ var d=Math.floor(distTime/1000/3600/24);
+ var h=Math.floor(distTime/1000/3600%24);
+ var m=Math.floor(distTime/1000/60%60);
+ var s=Math.floor(distTime/1000%60);
+ 
+ var hh = PrefixInteger(h,2);
+ var mm = PrefixInteger(m,2);
+ var ss = PrefixInteger(s,2);
+ 
+ var str="还有"+d+"天"+hh+"时"+mm+"分"+ss+"秒";
+ document.getElementById("timeout").innerHTML=str;
+  
+ timerCount= window.setTimeout("timer()",1000); 
+ }
+ else{
+ window.clearTimeout(timerCount);
+ alert("");
+ }
+ 
+ }
+ </script>
+ </head>
+ 
+ <body class="body"><div>
+ <span class="span" id="timeout">还有--天--时--分--秒</span>
+</div></body></html>
